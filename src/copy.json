@@ -1,0 +1,16 @@
+{
+	"steps": [
+		{
+			"type": "markdown",
+			"value": "This is a scrolly story where the content shows on the left, matching the plot on the right. On mobile, the content appears on top of the plot, which takes the full client width."
+		},
+		{
+			"type": "markdown",
+			"value": "As we scroll, we <em>sort</em> the data, describing how a bar chart is best read when ordered by counts."
+		},
+		{
+			"type": "markdown",
+			"value": "We can change mark, here transitioning from barchart to lollipop. Note that here we always show the same data, but differently."
+		}
+	]
+}
