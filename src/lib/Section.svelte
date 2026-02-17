@@ -3,7 +3,7 @@
 
   interface Props {
     id: string;
-    variant?: 'hook' | 'question' | 'context' | 'exploration' | 'insight' | 'recommendation';
+    variant?: 'hook' | 'question' | 'context' | 'exploration' | 'insight' | 'implication' | 'recommendation';
     title?: string;
     subtitle?: string;
     children: Snippet;
@@ -80,6 +80,10 @@
 
   .insight-section {
     background: white;
+  }
+
+  .implication-section {
+    background: #f9fafb;
   }
 
   .recommendation-section {

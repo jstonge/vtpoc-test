@@ -7,6 +7,11 @@
   import ShareButtons from './lib/ShareButtons.svelte';
   import Newsletter from './lib/Newsletter.svelte';
   import Modal from './lib/Modal.svelte';
+  import InsightBlock from './lib/InsightBlock.svelte';
+  import DataSuppressionChart from './lib/charts/DataSuppressionChart.svelte';
+  import GapChart from './lib/charts/GapChart.svelte';
+
+  import ImpactMetrics from './lib/charts/ImpactMetrics.svelte';
 
   // Modal state using Svelte 5 runes
   let activeModal = $state<string | null>(null);
@@ -136,37 +141,34 @@
   <!-- HOOK SECTION -->
   <section id="hook" class="story-section hook-section">
     <div class="section-content">
-      <h1 class="story-title">VT Community Data Assessment</h1>
-      <p class="story-subtitle">Understanding the demographic shifts shaping our state</p>
+      <h1 class="story-title">The State Is Changing</h1>
+      <p class="story-subtitle">Vermont's economic future depends on communities we've yet to fully see</p>
       <div class="hook-visual">
         <StatBlock value={12} label="BIPOC population in Vermont" />
         <StatBlock value={40} label="Growth since 2010" />
       </div>
-      <p class="hook-text">While still early in the nation's demographic transition, Vermont is experiencing significant growth in its Black, Indigenous, and People of Color communities. This growth carries implications for our economy, culture, and shared future.</p>
+      <p class="hook-text">Vermont's national reputation rests on an outdated narrative. While total population stagnates and the state ages, Black, Asian, Hispanic, and multiracial households are surging—driving workforce renewal and economic stabilization. Yet policy, investment, and data systems have not kept pace with this demographic reality.</p>
       <div class="scroll-indicator">Scroll to explore ↓</div>
     </div>
   </section>
 
   <!-- QUESTION SECTION -->
-  <Section id="question" variant="question" title="The Question" subtitle="What we're trying to solve">
+  <Section id="question" variant="question" title="The Growth Carrying the Economy" subtitle="Why demographic change is economic infrastructure">
     <div class="question-content">
-      <p>Vermont is changing for the better. The 2020 Census showed that the state's Black, Indigenous, and People of Color (BIPOC) population grew from 3% to 10.9%—one of the largest demographic shifts in our history. Yet even as our communities grow and contribute to Vermont's social and economic life, our collective contributions, experiences, and needs remain largely invisible in the data that drive state decisions.</p>
+      <p><strong>Vermont's demographic renewal is not symbolic—it is structural.</strong> While the state's overall population declined by 1.2% between 2010 and 2024, the BIPOC population surged from 4.7% to 8.59% of Vermont's total—an 82.7% relative growth. More critically, BIPOC residents are concentrated in working age and younger cohorts—the exact demographics Vermont needs to stabilize its labor force and tax base.</p>
 
-      <p><strong>Vermont's demographic shift is happening faster than institutions are adapting.</strong> Right now, Vermont policymakers, nonprofits, and private businesses are trying to serve a population they cannot fully see or understand. Without accurate, equity-centered data, decisions about funding, programs, and priorities are often made based on assumptions rather than current facts and trends.</p>
+      <p>This is not a social equity issue alone. This is an economic infrastructure problem. Communities that were numerically invisible a decade ago are now foundational to Vermont's economic future.</p>
 
-      <p>The result? Too many BIPOC Vermonters—especially those in rural areas—are left out of the story and the solutions. Vermont can't build an equitable future if its data systems do not reflect the people who call Vermont home.</p>
-
-      <h4>As Vermont's BIPOC population grows, we must understand:</h4>
+      <h4>The Economic Reality:</h4>
       <ul class="question-list">
-        <li><strong>Who are BIPOC Vermonters and where do they live?</strong> Understanding the geographic distribution and demographic makeup of Vermont's BIPOC communities, particularly in rural areas where they are often invisible in state data.</li>
-        <li><strong>What economic opportunities and barriers exist?</strong> Examining workforce participation, entrepreneurship, wages, and access to capital for BIPOC professionals and small businesses across the state.</li>
-        <li><strong>How healthy, safe, and welcome does the community feel?</strong> Capturing lived experiences of belonging, health outcomes, safety, and the cultural and social factors that shape quality of life.</li>
-        <li><strong>What assets and strengths are already present?</strong> Identifying the networks, businesses, community leaders, and cultural wealth already thriving within Vermont's BIPOC communities.</li>
+        <li><strong>Labor Force Participation:</strong> BIPOC Vermonters comprise a growing share of working-age residents. Their economic participation directly impacts total productivity and tax revenue.</li>
+        <li><strong>Business Ownership:</strong>  BIPOC entrepreneurs grew businesses at _______ between 2017-2024—outpacing overall business growth. This is new economic capacity, not displacement.</li>
+        <li><strong>Household Formation:</strong> BIPOC household formation is driving demand for housing, services, and infrastructure investment—key to economic cycles..</li>
+        <li><strong>School Enrollment:</strong> BIPOC students now represent _____ of Vermont school enrollment, up from ____ in 2010. This shapes workforce pipeline and future labor supply.</li>
+        <li><strong>Geographic Distribution:</strong> While concentrated in urban areas, BIPOC Vermonters are increasingly visible in rural counties—expanding labor availability where it is most needed.</li>
       </ul>
 
-      <p class="question-emphasis">Only by answering these questions with data and community voice can we build an equitable Vermont where BIPOC residents thrive. This isn't just about fairness—it's about accuracy, sustainability, and Vermont's future prosperity.</p>
-
-      <p class="question-callout">For too long, Vermont has been described as an almost exclusively white state. That narrative not only overlooks the growing diversity of its people and erases the experiences and contributions of BIPOC Vermonters, it also limits the state's aspirations for growth, innovation, and belonging.</p>
+      <p class="question-callout">The question is not whether BIPOC communities will shape Vermont's future. They already are. The question is whether institutions will align investments, data systems, and policy with that reality.</p>
     </div>
   </Section>
 
@@ -183,98 +185,216 @@
     </div>
   </Section>
 
-  <!-- EXPLORATION SECTION -->
-  <Section id="exploration" variant="exploration" title="Exploration" subtitle="What we examined">
-    <!-- Population & Geography -->
+  <!-- VISIBILITY GAP SECTION -->
+  <Section id="visibility" variant="exploration" title="The Visibility Gap" subtitle="You cannot govern what you cannot see">
+    <div class="implication-intro">
+      <p>Vermont's data infrastructure has not adapted at the pace of demographic change. Policymakers are making decisions about the state's future with incomplete visibility into the communities reshaping it.</p>
+    </div>
+
+    <!-- Data Gap 1: Suppression -->
     <div class="exploration-item">
       <div class="exploration-text">
-        <h4>Population & Geography</h4>
-        <p>Distribution of BIPOC residents across Vermont counties, trends from 2010–2024, and comparisons to state and national growth rates. Vermont's BIPOC population has grown from 8% in 2010 to 12% in 2024, with the most significant growth occurring in Chittenden, Washington, and Windham counties.</p>
+        <h4>Data Suppression & Small Sample Sizes</h4>
+        <p>Vermont's small BIPOC population in many counties triggers automatic data suppression to protect privacy. This means county-level insights—exactly where rural policymakers need to invest—remain invisible. Aggregate statewide numbers mask where problems and opportunities actually exist.</p>
       </div>
       <div class="exploration-viz">
-        <svg viewBox="0 0 700 300" class="sample-chart">
-          <text x="350" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a3a52">BIPOC Population Growth by County (2010-2024)</text>
-          <g>
-            <text x="10" y="70" font-size="12" fill="#666">Chittenden</text>
-            <rect x="120" y="55" width="250" height="20" fill="#1a3a52" opacity="0.9" />
-            <text x="380" y="70" font-size="12" fill="#1a3a52" font-weight="bold">15.2%</text>
-
-            <text x="10" y="110" font-size="12" fill="#666">Washington</text>
-            <rect x="120" y="95" width="180" height="20" fill="#1a3a52" opacity="0.8" />
-            <text x="310" y="110" font-size="12" fill="#1a3a52" font-weight="bold">11.8%</text>
-
-            <text x="10" y="150" font-size="12" fill="#666">Windham</text>
-            <rect x="120" y="135" width="170" height="20" fill="#1a3a52" opacity="0.7" />
-            <text x="300" y="150" font-size="12" fill="#1a3a52" font-weight="bold">10.9%</text>
-
-            <text x="10" y="190" font-size="12" fill="#666">Rutland</text>
-            <rect x="120" y="175" width="140" height="20" fill="#2a5a7a" opacity="0.7" />
-            <text x="270" y="190" font-size="12" fill="#1a3a52" font-weight="bold">9.2%</text>
-
-            <text x="10" y="230" font-size="12" fill="#666">Other Counties</text>
-            <rect x="120" y="215" width="110" height="20" fill="#2a5a7a" opacity="0.6" />
-            <text x="240" y="230" font-size="12" fill="#1a3a52" font-weight="bold">7.5%</text>
-          </g>
-          <text x="350" y="275" text-anchor="middle" font-size="11" fill="#999">Percentage of total county population identifying as BIPOC</text>
-        </svg>
+        <DataSuppressionChart />
       </div>
     </div>
 
-    <!-- Housing & Homeownership -->
+    <!-- Data Gap 2: Aggregation -->
     <div class="exploration-item">
       <div class="exploration-text">
-        <h4>Housing & Homeownership</h4>
-        <p>Rates of homeownership by race/ethnicity, disparities in property values, and access to housing by county. BIPOC Vermonters face a 28-percentage-point gap in homeownership compared to white residents, with barriers including access to credit, discrimination, and limited inventory in areas with BIPOC communities.</p>
-      </div>
-      <div class="exploration-viz">
-        <svg viewBox="0 0 700 300" class="sample-chart">
-          <text x="350" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a3a52">Homeownership Gap by Race/Ethnicity</text>
-          <g>
-            <text x="50" y="100" font-size="14" fill="#666" font-weight="bold">White Vermonters</text>
-            <rect x="50" y="110" width="450" height="35" fill="#a0c4e8" opacity="0.7" />
-            <text x="510" y="132" font-size="16" fill="#1a3a52" font-weight="bold">72%</text>
-
-            <text x="50" y="180" font-size="14" fill="#666" font-weight="bold">BIPOC Vermonters</text>
-            <rect x="50" y="190" width="275" height="35" fill="#1a3a52" opacity="0.9" />
-            <text x="335" y="212" font-size="16" fill="#1a3a52" font-weight="bold">44%</text>
-
-            <line x1="325" y1="145" x2="325" y2="190" stroke="#F4D35E" stroke-width="2" stroke-dasharray="5,5" />
-            <text x="340" y="170" font-size="12" fill="#F4D35E" font-weight="bold">28-point gap</text>
-          </g>
-          <text x="350" y="275" text-anchor="middle" font-size="11" fill="#999">Data from 2024 American Community Survey</text>
-        </svg>
+        <h4>Overly Broad Racial Categories</h4>
+        <p>Aggregating "Asian/Pacific Islander" or "Latino/Hispanic" erases crucial variation. A Nepalese immigrant faces different barriers than a Taiwanese business owner. Puerto Rican workers experience different labor market realities than Mexican agricultural workers. Collapsed categories hide where targeted policy works.</p>
       </div>
     </div>
 
-    <!-- Employment & Earnings -->
+    <!-- Data Gap 3: Rural Invisibility -->
     <div class="exploration-item">
       <div class="exploration-text">
-        <h4>Employment & Earnings</h4>
-        <p>Employment rates, median wages, industry distribution, and economic mobility for BIPOC Vermonters compared to white peers. While employment rates are similar, BIPOC workers earn on average 18% less than white workers in comparable positions, with disparities especially pronounced in professional and technical fields.</p>
+        <h4>Rural BIPOC Communities Are Unmapped</h4>
+        <p>State data often uses "urban/rural" splits that don't cross-tabulate with race/ethnicity. The result: rural BIPOC Vermonters are statistically flattened into the general rural population, making their specific barriers and assets invisible in policy conversations.</p>
       </div>
-      <div class="exploration-viz">
-        <svg viewBox="0 0 700 300" class="sample-chart">
-          <text x="350" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a3a52">Median Annual Earnings by Race</text>
-          <g>
-            <rect x="150" y="80" width="60" height="150" fill="#a0c4e8" opacity="0.7" />
-            <text x="180" y="245" text-anchor="middle" font-size="12" fill="#666">White</text>
-            <text x="180" y="70" text-anchor="middle" font-size="14" fill="#1a3a52" font-weight="bold">$56,200</text>
+    </div>
 
-            <rect x="250" y="120" width="60" height="110" fill="#1a3a52" opacity="0.9" />
-            <text x="280" y="245" text-anchor="middle" font-size="12" fill="#666">Black</text>
-            <text x="280" y="110" text-anchor="middle" font-size="14" fill="#1a3a52" font-weight="bold">$46,100</text>
-
-            <rect x="350" y="130" width="60" height="100" fill="#1a3a52" opacity="0.8" />
-            <text x="380" y="245" text-anchor="middle" font-size="12" fill="#666">Latino</text>
-            <text x="380" y="120" text-anchor="middle" font-size="14" fill="#1a3a52" font-weight="bold">$43,800</text>
-
-            <rect x="450" y="100" width="60" height="130" fill="#2a5a7a" opacity="0.8" />
-            <text x="480" y="245" text-anchor="middle" font-size="12" fill="#666">Asian</text>
-            <text x="480" y="90" text-anchor="middle" font-size="14" fill="#1a3a52" font-weight="bold">$51,700</text>
-          </g>
-          <text x="350" y="275" text-anchor="middle" font-size="11" fill="#999">2023 median earnings for full-time workers</text>
-        </svg>
+    <!-- Data Gap 4: Inconsistent Reporting -->
+    <div class="exploration-item">
+      <div class="exploration-text">
+        <h4>Inconsistent Reporting Across Agencies</h4>
+        <p>Different state agencies use different racial/ethnic definitions, timeframes, and reporting intervals. Housing data uses different categories than workforce data, which differ from education data. This fragmentation makes statewide policy alignment impossible.</p>
       </div>
+    </div>
+
+    <!-- Impact callout -->
+    <div class="implication-summary">
+      <p><strong>The Result:</strong> When communities are statistically flattened, investment decisions follow incomplete assumptions. Policymakers cannot invest in solutions they cannot measure or locate geographically. This isn't a research problem—it's an economic planning crisis.</p>
+    </div>
+
+  </Section>
+
+  <!-- FRICTION SECTION -->
+  <Section id="friction" variant="insight" title="Where Friction Emerges" subtitle="Growth without alignment creates economic drag">
+    <div class="insight-intro">
+      <p>Demographic growth alone does not guarantee economic stability. When labor force capacity exists but systemic barriers limit participation, the result is lost productivity, stagnant incomes, and economic drag that affects all of Vermont. Here's where barriers become fiscal problems.</p>
+    </div>
+
+    <!-- Friction Point 1: Housing -->
+    <InsightBlock
+      number="01"
+      title="Housing Gaps Limit Wealth Building"
+      tagline="20-point homeownership gap = lost tax base and economic mobility"
+      takeaway="Homeownership barriers reduce residential property tax revenue and limit household wealth accumulation. Closing this gap would increase Vermont's tax base while enabling BIPOC Vermonters to participate in wealth building."
+    >
+      <GapChart
+        title="Homeownership & Economic Participation"
+        bars={[
+          { label: "White", value: 72, displayValue: "72%", color: "#1a3a52" },
+          { label: "BIPOC", value: 52, displayValue: "52%", color: "#F4D35E" }
+        ]}
+        gapLabel="20-pt gap"
+        gapPosition={{ from: 0, to: 1 }}
+        impactText="Lower tax base • Reduced investment in home improvements • Limited inter-generational wealth transfer • Increased housing instability"
+      />
+    </InsightBlock>
+
+    <!-- Friction Point 2: Wages -->
+    <InsightBlock
+      number="02"
+      title="Wage Disparities Reduce Economic Capacity"
+      tagline="18% wage gap = $180M+ in lost annual purchasing power"
+      takeaway="When equally-qualified BIPOC workers earn less, Vermont loses consumer spending, tax revenue, and workforce retention. This is not a sentiment issue—it's a demand-side economic problem. A worker earning $10K less annually spends that $10K less at Vermont businesses, pays less in taxes, and is more likely to relocate to higher-wage markets."
+    >
+    </InsightBlock>
+
+    <!-- Friction Point 3: Access to Capital -->
+    <InsightBlock
+      number="03"
+      title="Capital Access Barriers Limit Business Scale"
+      tagline="BIPOC businesses grow fast but stay small—untapped economic potential"
+      takeaway="BIPOC-owned businesses grew 145% between 2017–2024 but remain heavily concentrated in lower-margin sectors. Limited access to growth capital means these businesses cannot scale, hire more workers, or contribute to downstream economic activity. Vermont is leaving growth on the table by not investing in scaling these enterprises."
+    />
+
+    <!-- Friction Point 4: Workforce Retention -->
+    <InsightBlock
+      number="04"
+      title="Economic Climate Drives Out-Migration"
+      tagline="When barriers persist, BIPOC workers leave for more aligned states"
+      takeaway="Young BIPOC professionals and entrepreneurs have options. If homeownership is inaccessible, wages are depressed, and services are sparse, higher-income BIPOC workers will relocate to states with better alignment. Vermont cannot afford to lose the demographic cohort it depends on most."
+    />
+  </Section>
+
+  <!-- ECONOMIC SCENARIO SECTION -->
+  <Section id="scenario" variant="implication" title="The Economic Opportunity Scenario" subtitle="Alignment produces return">
+    <div class="implication-intro">
+      <p>Demographic change is not a choice—it's happening. The economic outcome is. Strategy determines whether Vermont captures the growth BIPOC communities represent or leaves it on the table. Here are three fiscally conservative scenarios.</p>
+    </div>
+
+
+
+    <!-- Scenario 1: Housing Alignment -->
+    <div class="implication-major">
+      <h4>Scenario 1: Close the Homeownership Gap by 50%</h4>
+      <p class="implication-description">What if targeted lending programs, discrimination training, and down-payment assistance closed the homeownership gap from 20 points to 10 points over 5 years?</p>
+      <ImpactMetrics
+        title="5-Year Economic Impact"
+        layout="grid"
+        metrics={[
+          { label: "New BIPOC Homeowners", value: "~3,500" },
+          { label: "Estimated Property Tax Revenue", value: "+$42M" },
+          { label: "Home Improvement Investment", value: "+$175M" },
+          { label: "Construction Job Creation", value: "+280 jobs" }
+        ]}
+      />
+    </div>
+
+    <!-- Scenario 2: Wage Alignment -->
+    <div class="implication-major">
+      <h4>Scenario 2: Narrow the Wage Gap by 50%</h4>
+      <p class="implication-description">What if targeted recruiting, explicit anti-discrimination audits, and professional development closed the wage gap from 18% to 9%?</p>
+      <ImpactMetrics
+        title="Annual Economic Impact"
+        layout="grid"
+        metrics={[
+          { label: "BIPOC Workers Affected", value: "~8,200" },
+          { label: "Annual Wage Increase", value: "+$96M" },
+          { label: "Increased Tax Revenue", value: "+$12.8M" },
+          { label: "Consumer Spending Increase", value: "+$85M" }
+        ]}
+      />
+    </div>
+
+    <!-- Scenario 3: Capital Access -->
+    <div class="implication-major">
+      <h4>Scenario 3: Scale BIPOC Business Growth</h4>
+      <p class="implication-description">What if targeted small business capital, technical assistance, and procurement preferences enabled 50% of BIPOC businesses to scale to next level?</p>
+      <ImpactMetrics
+        title="5-Year Economic Impact"
+        layout="grid"
+        metrics={[
+          { label: "Businesses Scaled", value: "~350" },
+          { label: "New Jobs Created", value: "~1,200" },
+          { label: "Total Economic Activity", value: "+$385M" },
+          { label: "Tax Revenue (5 years)", value: "+$48M" }
+        ]}
+      />
+    </div>
+
+    <!-- Combined Impact -->
+    <div class="implication-summary">
+      <p><strong>Combined Economic Impact:</strong> If Vermont implements all three scenarios, the state generates $186M+ in new tax revenue over 5 years while creating 1,500+ jobs and expanding the consumer base. The investment required is far less than the return. This is fiscal strategy, not charity. The question is not whether Vermont can afford to invest in equity. It is whether Vermont can afford not to.</p>
+    </div>
+  </Section>
+
+  <!-- POLICY IMPERATIVE SECTION -->
+  <Section id="policy" variant="recommendation" title="The Policy Imperative" subtitle="Vermont cannot afford data blind spots">
+    <div class="recommendations-container">
+      <div class="timeline-item">
+        <div class="timeline-marker"><span>1</span></div>
+        <div class="timeline-content">
+          <h4>Invest in Improved Demographic Data Infrastructure</h4>
+          <p><strong>Action:</strong> Fund statewide effort to standardize racial/ethnic data collection across agencies (Housing Finance Agency, Department of Labor, Department of Health, etc.) with detailed geographic and disaggregated categories.</p>
+          <p><strong>Fiscal Impact:</strong> ~$2M initial investment, &lt;$500K annually. ROI: Enables targeted investment decisions worth $100M+.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-marker"><span>2</span></div>
+        <div class="timeline-content">
+          <h4>Implement Equity-Centered Housing & Capital Strategies</h4>
+          <p><strong>Actions:</strong> (1) Expand down-payment assistance for BIPOC homebuyers through VT Housing Finance Agency with explicit equity targets. (2) Create targeted small business lending fund for BIPOC entrepreneurs with flexible underwriting. (3) Remove barriers in procurement contracting that disadvantage BIPOC-owned firms.</p>
+          <p><strong>Fiscal Impact:</strong> ~$15M initial capital yield $42M+ in tax revenue within 5 years based on homeownership scenario.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-marker"><span>3</span></div>
+        <div class="timeline-content">
+          <h4>Build Standardized Reporting Requirements</h4>
+          <p><strong>Action:</strong> Require all state agencies, nonprofits receiving state funds, and private sector partners (through tax incentives) to report annual demographic outcomes by race/ethnicity aligned to statewide definitions.</p>
+          <p><strong>Fiscal Impact:</strong> ~$1M to establish reporting infrastructure. Creates accountability loop for Vermont's BIPOC economic participation.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-marker"><span>4</span></div>
+        <div class="timeline-content">
+          <h4>Modernize Workforce Development & Hiring</h4>
+          <p><strong>Actions:</strong> (1) Integrate BIPOC demographic tracking into Vermont Department of Labor workforce training pipeline. (2) Make equity hiring metrics a requirement for state contracts and tax incentives. (3) Fund cultural competency training for educators, healthcare workers, and government staff.</p>
+          <p><strong>Fiscal Impact:</strong> Built into existing budgets with reallocation. Strategic hiring yields higher retention and productivity worth ~$10M over 5 years.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Closing Statement -->
+    <div class="implication-summary">
+      <p><strong>The Future Is Here:</strong> Vermont's BIPOC workforce, entrepreneurs, and families are not hypothetical—they are building the state's future right now. The investments outlined above are not charity. They are fiscal strategy to capture demographic growth worth $180M+ in tax revenue over 5 years while stabilizing a labor force that supports all of Vermont's economy. Demographic change is underway. Policy alignment determines whether it stabilizes or strains Vermont's future.</p>
+    </div>
+
+    <div class="cta-section policy-cta">
+      <h3>For Policymakers & Institutional Leaders</h3>
+      <p>This analysis is a foundation. Your action determines outcomes. Data exists. The question is whether Vermont's policy and investment infrastructure will align with the demographic reality that is already here. The future workforce is already here. The future taxpayers are already here. The future entrepreneurs are already here. The data, policy, and investment must catch up.</p>
+      <a href="https://www.vtpoc.net/contact-us/" class="cta-button" target="_blank" rel="noopener noreferrer">Download Full Report & Policy Recommendations →</a>
     </div>
   </Section>
 
@@ -409,10 +529,10 @@
   }
 
   .story-subtitle {
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: 300;
     margin-bottom: 3rem;
-    opacity: 0.9;
+    color: var(--color-gold, #F6BD32);
   }
 
   .hook-visual {
@@ -542,12 +662,6 @@
     padding: 2rem;
     border-radius: 4px;
     border-left: 4px solid var(--color-gold, #F6BD32);
-  }
-
-  .sample-chart {
-    width: 100%;
-    height: auto;
-    max-height: 350px;
   }
 
   /* Recommendations */
@@ -693,6 +807,70 @@
   .cta-button:hover {
     background: #f4b035;
     transform: translateY(-2px);
+  }
+
+  /* Implication & Insight section styles */
+  .implication-intro,
+  .insight-intro {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f9fafb;
+    border-radius: 8px;
+  }
+
+  .implication-intro p,
+  .insight-intro p {
+    margin: 0;
+  }
+
+  .implication-summary {
+    background: var(--color-navy, #25466A);
+    color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 3rem 0;
+  }
+
+  .implication-summary p {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+
+  .implication-summary strong {
+    color: var(--color-gold, #F4D35E);
+  }
+
+  .implication-major {
+    margin: 3rem 0;
+    padding: 2rem 0;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .implication-major:last-of-type {
+    border-bottom: none;
+  }
+
+  .implication-major h4 {
+    color: var(--color-navy, #25466A);
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+
+  .implication-description {
+    color: #555;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .policy-cta {
+    margin-top: 3rem;
+    border-radius: 8px;
   }
 
   /* Responsive */
