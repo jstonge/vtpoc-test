@@ -398,50 +398,6 @@
     </div>
   </Section>
 
-  <!-- RECOMMENDATION SECTION -->
-  <Section id="recommendation" variant="recommendation" title="Recommendation" subtitle="What we should do next">
-    <div class="recommendations-container">
-      {#each recommendations as rec}
-        <div class="timeline-item">
-          <div class="timeline-marker"><span>{rec.number}</span></div>
-          <div class="timeline-content">
-            <h4>{rec.title}</h4>
-            <p>{rec.description}</p>
-          </div>
-        </div>
-      {/each}
-    </div>
-
-    <!-- Action Items Section -->
-    <div class="action-section">
-      <h3>Take Action Now</h3>
-      <p class="action-intro">Whether you're a community member, policymaker, nonprofit leader, or concerned citizen—you have a role to play in building an equitable Vermont. Every action counts.</p>
-
-      <div class="action-grid">
-        {#each actionCards as card}
-          <ActionCard {...card} />
-        {/each}
-      </div>
-    </div>
-
-    <!-- Newsletter Signup -->
-    <div class="newsletter-wrapper">
-      <Newsletter />
-    </div>
-
-    <!-- Share This Story -->
-    <div class="share-section">
-      <h3>Share This Story</h3>
-      <p>Help spread awareness about Vermont's changing demographics and the importance of equity-centered data.</p>
-      <ShareButtons />
-    </div>
-
-    <div class="cta-section">
-      <h3>Questions or Want to Collaborate?</h3>
-      <p>VT PoC is committed to data-informed community partnerships. Whether you're a researcher, policymaker, nonprofit, or business leader—let's work together.</p>
-      <a href="https://www.vtpoc.net/contact-us/" class="cta-button" target="_blank" rel="noopener noreferrer">Contact VT PoC →</a>
-    </div>
-  </Section>
 </Layout>
 
 <!-- MODALS -->
